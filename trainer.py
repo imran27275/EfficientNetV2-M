@@ -130,6 +130,11 @@ val_loader   = DataLoader(val_dataset, batch_size=BATCH_SIZE, shuffle=False, num
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print("Using device: " + str(device))
+model = timm.create_model("convnext_base", pretrained=True, num_classes=2)
+
+    #   for ConvNeXt-B model use this code and remove the self.model code below
+    #   model = timm.create_model("tf_efficientnetv2_m", pretrained=True, num_classes=2)
+
 model = timm.create_model("tf_efficientnetv2_m", pretrained=True, num_classes=2)
 model = model.to(device)
 
